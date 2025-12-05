@@ -254,18 +254,35 @@ $conversation->export();            // Export as array
 
 **Storage Drivers:**
 
-By default, conversations are stored in the Laravel session (expires with session). For persistent storage, use the database driver:
+| Driver | Storage | Best For |
+|--------|---------|----------|
+| `session` | Laravel session | Web apps, temporary chats (default) |
+| `database` | Database table | Persistent storage, chat history |
+
+**Session Driver (Default):**
+
+Conversations are stored in the Laravel session and expire when the session ends. No setup required.
+
+```env
+LLM_CONVERSATION_DRIVER=session
+```
+
+**Database Driver:**
+
+For persistent storage across sessions:
 
 ```env
 LLM_CONVERSATION_DRIVER=database
 ```
 
-Then publish and run the migration:
+Publish and run the migration:
 
 ```bash
 php artisan vendor:publish --tag=llm-suite-migrations
 php artisan migrate
 ```
+
+This creates the `llm_conversations` table for storing conversation history.
 
 ### Token Usage
 
