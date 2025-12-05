@@ -40,7 +40,6 @@ class LlmSuiteServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/llm-suite.php' => config_path('llm-suite.php'),
             ], 'llm-suite-config');
 
-            // Publish migrations (fixed timestamp for consistency)
             $this->publishes([
                 __DIR__ . '/../database/migrations/2024_01_01_000000_create_llm_conversations_table.php' => database_path('migrations/2024_01_01_000000_create_llm_conversations_table.php'),
             ], 'llm-suite-migrations');
