@@ -75,5 +75,12 @@ interface ConversationStore
      * @return void
      */
     public function delete(string $conversationId): void;
+
+    /**
+     * Get all conversation IDs.
+     *
+     * @return array
+     */
+    public function all(): array;
 }
 

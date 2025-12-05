@@ -148,5 +148,36 @@ class DatabaseStore implements ConversationStore
             ->where('conversation_id', $conversationId)
             ->first();
     }
+
+    /**
+     * Get all conversation IDs.
+     */
+    public function all(): array
+    {
+        return DB::table($this->table)
+            ->orderBy('updated_at', 'desc')
+            ->pluck('conversation_id')
+            ->toArray();
+    }
+
+    /**
+     * Get all conversations with metadata.
+     */
+    public function allWithMetadata(): array
+    {
+        return DB::table($this->table)
+            ->orderBy('updated_at', 'desc')
+            ->get()
+            ->map(function ($record) {
+                return [
+                    'id' => $record->conversation_id,
+                    'system_prompt' => $record->system_prompt,
+                    'message_count' => count(json_decode($record->messages, true) ?? []),
+                    'created_at' => $record->created_at,
+                    'updated_at' => $record->updated_at,
+                ];
+            })
+            ->toArray();
+    }
 }
 

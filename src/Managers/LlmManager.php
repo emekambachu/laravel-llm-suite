@@ -333,5 +333,13 @@ class LlmManager
     {
         return Str::uuid()->toString();
     }
+
+    /**
+     * Get all conversation IDs.
+     */
+    public function conversations(): array
+    {
+        return $this->getConversationStore()->all();
+    }
 }
 

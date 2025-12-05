@@ -255,6 +255,23 @@ $conversation->delete();            // Delete entire conversation
 $conversation->export();            // Export as array
 ```
 
+**List all conversations:**
+
+```php
+use Llm;
+
+// Get all conversation IDs
+$conversationIds = Llm::conversations();
+// ['550e8400-e29b-41d4-a716-446655440000', '6ba7b810-9dad-11d1-80b4-00c04fd430c8', ...]
+
+// With database driver, you can also get metadata
+$store = Llm::getConversationStore();
+if ($store instanceof \Oziri\LlmSuite\ConversationStores\DatabaseStore) {
+    $conversations = $store->allWithMetadata();
+    // [['id' => '...', 'message_count' => 5, 'created_at' => '...', 'updated_at' => '...'], ...]
+}
+```
+
 **Storage Drivers:**
 
 | Driver | Storage | Best For |
@@ -523,6 +540,7 @@ $response = Llm::using('my-custom')->chat('Hello!');
 | `Llm::getDefaultProvider()` | Get the default provider name |
 | `Llm::client($name)` | Get the underlying client instance |
 | `Llm::conversation($id)` | Start new or resume existing conversation |
+| `Llm::conversations()` | Get all conversation IDs |
 
 ### Client Methods (OpenAI, LM Studio)
 

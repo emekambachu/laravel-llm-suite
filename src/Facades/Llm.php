@@ -32,6 +32,7 @@ use Oziri\LlmSuite\Support\ImageResponse;
  * @method static LlmManager forgetAllClients()
  * @method static array getConfig()
  * @method static Conversation conversation(?string $conversationId = null, ?string $provider = null)
+ * @method static array conversations()
  * @method static ConversationStore getConversationStore()
  * @method static LlmManager setConversationStore(ConversationStore $store)
  *

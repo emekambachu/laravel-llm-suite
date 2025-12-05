@@ -105,5 +105,22 @@ class SessionStore implements ConversationStore
     {
         Session::forget($this->getKey($conversationId));
     }
+
+    /**
+     * Get all conversation IDs from the session.
+     */
+    public function all(): array
+    {
+        $conversations = [];
+        $prefix = self::SESSION_PREFIX;
+        
+        foreach (Session::all() as $key => $value) {
+            if (str_starts_with($key, $prefix)) {
+                $conversations[] = substr($key, strlen($prefix));
+            }
+        }
+        
+        return $conversations;
+    }
 }
 
