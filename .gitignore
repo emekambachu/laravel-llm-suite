@@ -12,7 +12,5 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
-
-# AI Agent rules (private)
-.cursor/
+.local/
 

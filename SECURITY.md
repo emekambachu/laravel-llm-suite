@@ -19,7 +19,7 @@ If you discover a security vulnerability within Laravel LLM Suite, please take t
 
 ### Do
 
-1. **Email the maintainers directly** at [security@example.com] (replace with actual email)
+1. **Email the maintainers directly** at [oziriemeka@gmail.com] (replace with actual email)
 2. Include the following information:
    - Description of the vulnerability
    - Steps to reproduce
